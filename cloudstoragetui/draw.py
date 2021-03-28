@@ -21,6 +21,7 @@ class DrawnBox:
                 length_x=self.length_x,
                 top_left_y=self.top_left_y,
                 top_left_x=self.top_left_x)
+        self.box.box()
 
         return self._draw_column(
             screen=screen,
@@ -35,7 +36,6 @@ class DrawnBox:
 
     def create_box(self, length_y: int, length_x: int, top_left_y: int, top_left_x: int):
         box = curses.newwin(length_y, length_x, top_left_y, top_left_x)
-        box.box()
         return box
 
     def _draw_column(self, screen, box, length_y: int, length_x: int, top_left_y: int, top_left_x: int, data: List[FileSystem], column: int, cursor_state: CursorState):

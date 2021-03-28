@@ -37,9 +37,9 @@ def draw_columns(screen, data: List[List[FileSystem]], cursor_state: CursorState
         box.draw_column_with_text(screen, col_data, cursor_state)
     return boxes
 
-def _loading(screen, x, y):
+def _loading(screen, x=None, y=None):
     curs_y, curs_x = curses.getsyx()
-    screen.addstr(x, y, "⌛")
+    screen.addstr(y or curs_y, x or curs_x, "Loading")
     screen.refresh()
     screen.move(curs_y, curs_x)
 
@@ -67,12 +67,13 @@ def screen_init(screen, cloud_adapter: CloudAdapter):
 
     while True:
         key = screen.getch()
+        screen.clear()
         previous_state = cursor_state.copy()
         action = eval_keypress(screen, key, boxes, cursor_state)
         if action == ESC:
             break
         column_data = evaluate_action(screen, action, cloud_adapter, previous_state, cursor_state, column_data)
-        boxes = screen_wrapper(screen, draw_columns)(data=column_data, cursor_state=cursor_state, boxes=boxes)
+        boxes = screen_wrapper(screen, draw_columns)(data=column_data[-3:], cursor_state=cursor_state, boxes=boxes)
     
 
 def main():

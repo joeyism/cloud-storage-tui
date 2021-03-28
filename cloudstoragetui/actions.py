@@ -14,7 +14,10 @@ def evaluate_action(screen, action: int, cloud_adapter: CloudAdapter, previous_s
         filesystem = column_data[column][row]
         if filesystem.is_folder():
             children = filesystem.generate_children_filesystem()
-            column_data[column+1] = children
+            if column + 1 >= NO_OF_COLUMNS:
+                column_data.append(children)
+            else:
+                column_data[column + 1] = children
         else:
             "TODO: download file"
     return column_data
