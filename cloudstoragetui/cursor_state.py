@@ -7,14 +7,17 @@ class CursorState:
 
     def __init__(self):
         self.column = 0
+        self.depth = 0
         self.row = self._MIN_ROW
     
     def move_column_right(self):
         self.column = min(self.column + 1, self._MAX_COLUMNS)
+        self.depth += 1
         self.row = self._MIN_ROW
 
     def move_column_left(self):
         self.column = max(self.column - 1, 0)
+        self.depth = max(self.depth - 1, 0)
         self.row = self._MIN_ROW
 
     def move_row_up(self, min_x):

@@ -1,0 +1,7 @@
+setup.py
+cloudstoragetui.egg-info/PKG-INFO
+cloudstoragetui.egg-info/SOURCES.txt
+cloudstoragetui.egg-info/dependency_links.txt
+cloudstoragetui.egg-info/entry_points.txt
+cloudstoragetui.egg-info/requires.txt
+cloudstoragetui.egg-info/top_level.txt

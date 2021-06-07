@@ -1,0 +1,3 @@
+[console_scripts]
+cloudstoragetui = cloudstoragetui.main:main
+

@@ -7,7 +7,7 @@ from cloudstoragetui.cursor_state import CursorState
 from cloudstoragetui.filesystem import FileSystem, File, Folder, generate_filesystem_from_path
 
 
-def evaluate_action(screen, action: int, cloud_adapter: CloudAdapter, previous_state: CursorState, cursor_state: CursorState, column_data: List[List[FileSystem]]):
+def evaluate_action(screen, action: int, cloud_adapter: CloudAdapter, previous_state: CursorState, cursor_state: CursorState, column_data: List[List[FileSystem]]) -> None:
     if action == RIGHT:
         row = previous_state.get_row_in_box()
         column = previous_state.column
